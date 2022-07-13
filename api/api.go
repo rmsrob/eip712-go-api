@@ -8,4 +8,5 @@ import (
 func MainGroup(e *echo.Echo) {
 	// Routes
 	e.POST("/", handlers.PostEIP712)
+	e.POST("/verify", handlers.PostEIP712verify)
 }
