@@ -71,11 +71,11 @@ func PostEIP712verify(c echo.Context) error {
 
 	if !bytes.Equal(userAddress.Bytes(), recoveredAddr.Bytes()) {
 		return c.JSON(http.StatusOK, ReturnVerifyData{
-			Verify: true,
+			Verify: false,
 		})
 	} else {
 		return c.JSON(http.StatusOK, ReturnVerifyData{
-			Verify: false,
+			Verify: true,
 		})
 	}
 }
