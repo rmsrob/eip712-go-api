@@ -84,7 +84,9 @@ func PostEIP712(c echo.Context) error {
 		log.Fatalf("Failed to hash typed data %s", err)
 		return echo.NewHTTPError(http.StatusInternalServerError, err.Error)
 	}
-	log.Printf("hash to sign %#v\n", hashToSign)
+	log.Printf("hash to sign and stored in db %#v\n", hashToSign)
+
+	// TODO: store hashToSign in db with other data needed.
 
 	return c.JSON(http.StatusOK, ReturnData{
 		HashToSign: hashToSign,
