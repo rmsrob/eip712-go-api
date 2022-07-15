@@ -6,9 +6,7 @@ import (
 	"net/http"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/signer/core/apitypes"
 	"github.com/labstack/echo/v4"
 	"github.com/rrobrms/eip712-go-api/pkg/utils"
@@ -28,7 +26,7 @@ type SignParams struct {
 
 type ReturnData struct {
 	HashToSign common.Hash `json:"hashToSign"`
-	Signature  string      `json:"signature"`
+	// Signature  string      `json:"signature"`
 }
 
 func PostEIP712(c echo.Context) error {
@@ -101,21 +99,21 @@ func PostEIP712(c echo.Context) error {
 	// TODO: store hashToSign in db with other data needed.
 
 	// ! Sign the hash to simulate the signature of the user.
-	privateKey, err := crypto.HexToECDSA("")
-	if err != nil {
-		log.Fatal(err)
-	}
+	// privateKey, err := crypto.HexToECDSA("")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	signature, err := crypto.Sign(hashToSign.Bytes(), privateKey)
-	if err != nil {
-		log.Fatal(err)
-	}
-	signed := hexutil.Encode(signature)
+	// signature, err := crypto.Sign(hashToSign.Bytes(), privateKey)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// signed := hexutil.Encode(signature)
 	// ! end of signing.
 
 	return c.JSON(http.StatusOK, ReturnData{
 		HashToSign: hashToSign,
-		Signature:  signed,
+		// Signature:  signed,
 	})
 
 }
