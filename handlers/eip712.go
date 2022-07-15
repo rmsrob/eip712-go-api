@@ -72,8 +72,8 @@ func PostEIP712(c echo.Context) error {
 		},
 		Message: apitypes.TypedDataMessage{
 			// "action":   map[string]interface{}{"action": w3Data.Action, "tokenId": w3Data.TokenId, "buyPrice": w3Data.BuyPrice},
-			"action": w3Data.Action,
-			"tokenId": w3Data.TokenId, 
+			"action":   w3Data.Action,
+			"tokenId":  w3Data.TokenId,
 			"buyPrice": w3Data.BuyPrice,
 			"owner":    w3Data.Address,
 			"erc20":    "0x4A8b871784A8e6344126F47d48283a87Ea987f27",
