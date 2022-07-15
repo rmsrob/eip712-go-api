@@ -52,11 +52,12 @@ func PostEIP712verify(c echo.Context) error {
 		return fmt.Errorf("invalid signature length: %d", len(signature))
 	}
 
-	if signature[64] != 27 && signature[64] != 28 {
-		return fmt.Errorf("invalid recovery id: %d", signature[64])
-	}
-	signature[64] -= 27
+	// if signature[64] != 27 && signature[64] != 28 {
+	// 	return fmt.Errorf("invalid recovery id: %d", signature[64])
+	// }
+	// signature[64] -= 27
 
+	// ! prefer this methode to the one above
 	pubKeyRaw, err := crypto.Ecrecover(storedHash, signature)
 	if err != nil {
 		return fmt.Errorf("invalid signature: %s", err.Error())
